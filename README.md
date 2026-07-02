@@ -1,12 +1,14 @@
-# 🔍 deepwatch-vm
+# deepwatch-vm
 
-> Watching what's happening deep inside your VM — in real time.
+Watching what's happening deep inside your VM — in real time.
 
-A lightweight, containerized monitoring stack that scrapes, stores, and visualizes your VM's system metrics using **Prometheus**, **Node Exporter**, and **Grafana** — all wired together with Docker Compose.
+A lightweight, containerized monitoring stack that scrapes, stores, and visualizes your VM's
+system metrics using **Prometheus**, **Node Exporter**, and **Grafana** — all wired together
+with Docker Compose.
 
 ---
 
-## 📸 What It Does
+## What It Does
 
 - Collects CPU, memory, disk, and network metrics from the VM
 - Stores metrics in Prometheus with persistent storage
@@ -15,7 +17,7 @@ A lightweight, containerized monitoring stack that scrapes, stores, and visualiz
 
 ---
 
-## 🧱 Stack
+## Stack
 
 | Tool | Role | Port |
 |---|---|---|
@@ -25,22 +27,23 @@ A lightweight, containerized monitoring stack that scrapes, stores, and visualiz
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 deepwatch-vm/
 ├── docker-compose.yaml      # Defines all services
 ├── prometheus.yaml          # Scrape config for Prometheus
 ├── dashboards/
-│   └── node-exporter.json  # Pre-built Grafana dashboard
+│   └── node-exporter.json   # Pre-built Grafana dashboard
 └── README.md
 ```
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
+
 - Docker
 - Docker Compose
 
@@ -62,10 +65,10 @@ docker compose up -d
 
 ---
 
-## 📊 Setting Up the Dashboard
+## Setting Up the Dashboard
 
 1. Open Grafana at `http://<vm-ip>:3000`
-2. Login with `admin / admin`
+2. Log in with `admin / admin`
 3. Go to **Connections → Data Sources → Add data source**
 4. Select **Prometheus** and set URL to `http://prometheus:9090`
 5. Click **Save & Test**
@@ -74,7 +77,7 @@ docker compose up -d
 
 ---
 
-## 🧪 Testing the Setup
+## Testing the Setup
 
 Stress the CPU to verify metrics are flowing:
 
@@ -90,7 +93,7 @@ Watch the CPU graph spike in Grafana in real time.
 
 ---
 
-## 🔍 Useful Prometheus Queries
+## Useful Prometheus Queries
 
 ```promql
 # CPU Usage %
@@ -105,7 +108,7 @@ Watch the CPU graph spike in Grafana in real time.
 
 ---
 
-## 🛑 Stopping the Stack
+## Stopping the Stack
 
 ```bash
 docker compose down
@@ -115,8 +118,8 @@ Data is persisted in Docker volumes — metrics and dashboards survive restarts.
 
 ---
 
-## 📌 Notes
+## Notes
 
 - Scrape interval is set to `15s` — metrics update every 15 seconds
-- Grafana data (dashboards, users) is persisted via `grafana-data` volume
-- Prometheus metrics are persisted via `prometheus-data` volume
+- Grafana data (dashboards, users) is persisted via the `grafana-data` volume
+- Prometheus metrics are persisted via the `prometheus-data` volume
